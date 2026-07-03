@@ -9,13 +9,15 @@ Gesamtsystem: 4 CM5-Einheiten (je 2 Bahnen) + 1 Protokoll-Server
 | Pos | Bezeichnung | Menge | Stückpreis | Gesamt | Bezug |
 |-----|-------------|-------|-----------|--------|-------|
 | 1 | Raspberry Pi CM5 Lite 4GB | 4 | 45,00 € | 180,00 € | Reichelt / RS Components |
-| 2 | Hailo-8L AI HAT+ (13 TOPS) | 4 | 70,00 € | 280,00 € | Raspberry Pi / Reichelt |
-| 3 | Innomaker OV9281 Global Shutter Kamera | 8 | 30,00 € | 240,00 € | Amazon |
-| 4 | Raspberry Pi 5 (8GB, Protokoll-Server) | 1 | 80,00 € | 80,00 € | Reichelt |
-| 5 | SSD 256GB USB3 (z.B. Samsung T7) | 1 | 35,00 € | 35,00 € | Amazon |
-| 6 | Gigabit-Switch 5-Port | 1 | 20,00 € | 20,00 € | Amazon |
-| 7 | CM5-IO-Board oder Trägerplatine | 4 | 25,00 € | 100,00 € | Raspberry Pi |
-| | **Zwischensumme Hauptkomponenten** | | | **935,00 €** | |
+| 2 | Innomaker OV9281 Global Shutter Kamera | 8 | 30,00 € | 240,00 € | Amazon |
+| 3 | Raspberry Pi 5 (8GB, Protokoll-Server) | 1 | 80,00 € | 80,00 € | Reichelt |
+| 4 | SSD 256GB USB3 (z.B. Samsung T7) | 1 | 35,00 € | 35,00 € | Amazon |
+| 5 | Gigabit-Switch 5-Port | 1 | 20,00 € | 20,00 € | Amazon |
+| 6 | CM5-IO-Board oder Trägerplatine | 4 | 25,00 € | 100,00 € | Raspberry Pi |
+| | **Zwischensumme Hauptkomponenten** | | | **655,00 €** | |
+
+> **Kein Hailo-8L nötig:** Pi 5 CPU (4× Cortex-A76) verarbeitet alle 8 Barcodes + OCR
+> parallel in ~12 ms — bei 52,7 ms verfügbarer Zeit bleibt 40 ms Reserve.
 
 ---
 
@@ -74,15 +76,16 @@ Je nach gewünschtem Arbeitsabstand — nur eine Variante wählen:
 
 | Kategorie | Betrag |
 |-----------|--------|
-| Hauptkomponenten | 935,00 € |
+| Hauptkomponenten (ohne Hailo) | 655,00 € |
 | Optik (z.B. 6mm) | 64,00 € |
 | LED-Blitz | 34,80 € |
 | Trigger | 6,25 € |
 | Netzwerk & Strom | 116,00 € |
-| **Gesamt (ca.)** | **~1.156,05 €** |
-| Reserve +15% | **~1.330,00 €** |
+| **Gesamt (ca.)** | **~876,05 €** |
+| Reserve +15% | **~1.008,00 €** |
 
 > Preise sind Richtwerte (Stand 2026). CM5-Trägerplatine je nach Eigendesign oder Fertigplatine.
+> **Hailo-8L entfällt** (280 € gespart) — Pi 5 CPU reicht für Arial-Ziffern-OCR mit Tesseract.
 
 ---
 
