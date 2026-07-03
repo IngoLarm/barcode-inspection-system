@@ -18,6 +18,10 @@ Gesamtsystem: 4 CM5-Einheiten (je 2 Bahnen) + 1 Protokoll-Server
 
 > **Kein Hailo-8L nötig:** Pi 5 CPU (4× Cortex-A76) verarbeitet alle 8 Barcodes + OCR
 > parallel in ~12 ms — bei 52,7 ms verfügbarer Zeit bleibt 40 ms Reserve.
+>
+> **Hailo-8L in der Hinterhand:** Der HAT-Stecker am CM5 bleibt frei. Falls Tesseract
+> in der Praxis zu langsam sein sollte, kann der Hailo-8L ohne Hardware-Umbau
+> aufgesteckt und die OCR-Pipeline auf CRNN umgestellt werden.
 
 ---
 
@@ -85,7 +89,8 @@ Je nach gewünschtem Arbeitsabstand — nur eine Variante wählen:
 | Reserve +15% | **~1.008,00 €** |
 
 > Preise sind Richtwerte (Stand 2026). CM5-Trägerplatine je nach Eigendesign oder Fertigplatine.
-> **Hailo-8L entfällt** (280 € gespart) — Pi 5 CPU reicht für Arial-Ziffern-OCR mit Tesseract.
+> **Hailo-8L aktuell nicht verbaut** (280 € gespart) — Pi 5 CPU reicht für Arial-Ziffern-OCR.
+> **In der Hinterhand:** HAT-Stecker bleibt frei — Hailo-8L nachrüstbar ohne Hardware-Umbau.
 
 ---
 
