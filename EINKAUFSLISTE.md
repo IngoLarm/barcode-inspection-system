@@ -1,4 +1,4 @@
-# Einkaufsliste — 8-Bahn Barcode-Inspektionssystem
+# Einkaufsliste — 8-Bahn Kombi-Inspektionssystem (Loch + Barcode)
 
 Gesamtsystem: 4 CM5-Einheiten (je 2 Bahnen) + 1 Protokoll-Server
 
@@ -52,16 +52,22 @@ Je nach gewünschtem Arbeitsabstand — nur eine Variante wählen:
 
 ---
 
-## Trigger-Schaltung
+## Trigger-Schaltung & Encoder
 
 | Pos | Bezeichnung | Menge | Stückpreis | Gesamt | Bezug |
 |-----|-------------|-------|-----------|--------|-------|
-| 16 | OPB917BZ Lichtschranke | 1 | 5,00 € | 5,00 € | Mouser / DigiKey |
-| 17 | BC849 NPN-Transistor (SOT-23) | 5 | 0,10 € | 0,50 € | Reichelt |
-| 18 | Widerstand 560 Ω / 0603 | 5 | 0,05 € | 0,25 € | Reichelt |
-| 19 | Widerstand 100 kΩ / 0603 | 5 | 0,05 € | 0,25 € | Reichelt |
-| 20 | Widerstand 10 kΩ / 0603 | 5 | 0,05 € | 0,25 € | Reichelt |
-| | **Zwischensumme Trigger** | | | **6,25 €** | |
+| 16 | OPB917BZ Lichtschranke #1 (Loch-Trigger) | 1 | 5,00 € | 5,00 € | Mouser / DigiKey |
+| 17 | OPB917BZ Lichtschranke #2 (Barcode-Trigger) | 1 | 5,00 € | 5,00 € | Mouser / DigiKey |
+| 18 | Inkremental-Encoder (gemeinsam) | 1 | 15,00 € | 15,00 € | Reichelt / Conrad |
+| 19 | BC849 NPN-Transistor (SOT-23) | 5 | 0,10 € | 0,50 € | Reichelt |
+| 20 | Widerstand 560 Ω / 0603 | 5 | 0,05 € | 0,25 € | Reichelt |
+| 21 | Widerstand 100 kΩ / 0603 | 5 | 0,05 € | 0,25 € | Reichelt |
+| 22 | Widerstand 10 kΩ / 0603 | 5 | 0,05 € | 0,25 € | Reichelt |
+| | **Zwischensumme Trigger + Encoder** | | | **26,25 €** | |
+
+> **OPB917 #1** — Loch-Trigger: direkt an den 3mm Löchern, löst Kamera 1 + LED-Blitz aus.
+> **OPB917 #2** — Barcode-Trigger: vor dem Barcodefeld, löst Kamera 2 + LED-Blitz aus.
+> **Encoder** — liefert Bahnposition für Fehlende-Loch-Erkennung (Toleranzfenster ±0,5mm).
 
 ---
 
@@ -83,10 +89,10 @@ Je nach gewünschtem Arbeitsabstand — nur eine Variante wählen:
 | Hauptkomponenten (ohne Hailo) | 655,00 € |
 | Optik (z.B. 6mm) | 64,00 € |
 | LED-Blitz | 34,80 € |
-| Trigger | 6,25 € |
+| Trigger + Encoder | 26,25 € |
 | Netzwerk & Strom | 116,00 € |
-| **Gesamt (ca.)** | **~876,05 €** |
-| Reserve +15% | **~1.008,00 €** |
+| **Gesamt (ca.)** | **~896,05 €** |
+| Reserve +15% | **~1.030,00 €** |
 
 > Preise sind Richtwerte (Stand 2026). CM5-Trägerplatine je nach Eigendesign oder Fertigplatine.
 > **Hailo-8L aktuell nicht verbaut** (280 € gespart) — Pi 5 CPU reicht für Arial-Ziffern-OCR.
