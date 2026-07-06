@@ -46,9 +46,15 @@ Je nach gewünschtem Arbeitsabstand — nur eine Variante wählen:
 | 11 | IRLZ44N MOSFET (Logic-Level) | 4 | 0,60 € | 2,40 € | Reichelt |
 | 12 | Elko 1000µF / 25V | 4 | 0,40 € | 1,60 € | Reichelt |
 | 13 | Widerstand 10 Ω / 0,25W (Gate) | 4 | 0,10 € | 0,40 € | Reichelt |
-| 14 | Widerstand 2,2 Ω / 2W (Strom) | 4 | 0,30 € | 1,20 € | Reichelt |
+| 14 | Widerstand 2,2 Ω / 2W (Strom, je Strang) | 8 | 0,30 € | 2,40 € | Reichelt |
 | 15 | Diode 1N4007 | 4 | 0,10 € | 0,40 € | Reichelt |
-| | **Zwischensumme LED-Blitz** | | | **34,80 €** | |
+| | **Zwischensumme LED-Blitz** | | | **36,00 €** | |
+
+> **Pos. 14 auf 8 Stück:** 4 LEDs in Reihe bei 12V hätten kaum Spannungsreserve für den
+> Vorwiderstand (Vf-Summe zu nah an 12V → Strom driftet unkontrolliert). Stattdessen
+> **2 Stränge à 2 LEDs in Reihe, parallel**, jeder Strang mit eigenem 2,2Ω-Widerstand
+> (Details siehe unten). Ein gemeinsamer IRLZ44N schaltet beide Stränge (4,2A Pulsstrom
+> gesamt — für den MOSFET unkritisch).
 
 ---
 
@@ -88,11 +94,11 @@ Je nach gewünschtem Arbeitsabstand — nur eine Variante wählen:
 |-----------|--------|
 | Hauptkomponenten (ohne Hailo) | 655,00 € |
 | Optik (z.B. 6mm) | 64,00 € |
-| LED-Blitz | 34,80 € |
+| LED-Blitz | 36,00 € |
 | Trigger + Encoder | 26,25 € |
 | Netzwerk & Strom | 116,00 € |
-| **Gesamt (ca.)** | **~896,05 €** |
-| Reserve +15% | **~1.030,00 €** |
+| **Gesamt (ca.)** | **~897,25 €** |
+| Reserve +15% | **~1.032,00 €** |
 
 > Preise sind Richtwerte (Stand 2026). CM5-Trägerplatine je nach Eigendesign oder Fertigplatine.
 > **Hailo-8L aktuell nicht verbaut** (280 € gespart) — Pi 5 CPU reicht für Arial-Ziffern-OCR.
@@ -121,6 +127,32 @@ Alternativ (besser bei engem Einbauraum):
   │        Kamera       │
   └─────────────────────┘
 ```
+
+**Variante C (empfohlen): Ring direkt um das M12-Objektiv**
+
+```
+              LED
+               │
+      LED ── [ M12-Tubus ] ── LED     ← 4 LEDs im Kreis um das Objektiv,
+               │                        dicht an der optischen Achse →
+              LED                       kaum Schattenwurf, sehr kompakt
+```
+
+Elektrisch weiterhin als **2 Stränge à 2 LEDs in Reihe, parallel** (siehe Pos. 14):
+z.B. oben+unten ein Strang, links+rechts der andere — welche zwei LEDs galvanisch
+zusammenhängen ist für die Beleuchtung egal, da alle 4 gleichzeitig zünden.
+
+```
+12V ── Elko 1000µF ──┬── R1 (2,2Ω) ── LED ── LED ──┐
+                      │                              ├── Drain │ IRLZ44N
+                      └── R2 (2,2Ω) ── LED ── LED ──┘        Source → GND
+```
+
+> **Mechanischer Punkt (noch offen):** M12-Objektive haben ~14–16mm Tubusdurchmesser.
+> 4× 20mm-Star-PCBs mit 40×40mm-Kühlkörper (Pos. 10) passen nicht überlappungsfrei
+> direkt im Ring darum. Optionen: kleinere Kühlkörper (z.B. 20×20mm) dicht am Tubus,
+> oder ein eigens gefertigter Ring-Kühlkörper (wie bei Kamera-Ringlichtern üblich).
+> Noch nicht final entschieden — vor Bestellung der Kühlkörper klären.
 
 ### Berechnung (3W LED, 50mm Abstand, 30° Winkel, 3× Pulsstrom)
 
